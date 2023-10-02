@@ -35,7 +35,7 @@ router.get('/', (req, res, next) => {
   res.json(MENU);
 }); */
 
-/* // Read the pizza identified by an id in the menu
+ // Read the pizza identified by an id in the menu
 router.get('/:id', (req, res) => {
   console.log(`GET /pizzas/${req.params.id}`);
 
@@ -44,13 +44,13 @@ router.get('/:id', (req, res) => {
   if (indexOfPizzaFound < 0) return res.sendStatus(404);
 
   res.json(MENU[indexOfPizzaFound]);
-}); */
+}); 
 
 /* Read all the pizzas from the menu
    GET /pizzas?order=title : ascending order by title
    GET /pizzas?order=-title : descending order by title
 */
-router.get('/', (req, res, next) => {
+ router.get('/', (req, res, next) => {
   const orderByTitle =
     req?.query?.order?.includes('title')
       ? req.query.order
@@ -64,7 +64,7 @@ router.get('/', (req, res, next) => {
 
   console.log('GET /pizzas');
   res.json(orderedMenu ?? MENU);
-});
+}); 
 
 
 module.exports = router;
