@@ -1,5 +1,6 @@
 ### Create a film
-POST http://localhost:3000/films
+@baseUrl = http://localhost:3000
+POST {{baseUrl}}/films
 Content-Type: application/json
 
 {
