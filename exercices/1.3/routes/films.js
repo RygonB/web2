@@ -35,12 +35,12 @@ const FILMS = [
     }
 ];
 
-/* //affichage classic sur la page
+ //affichage classic sur la page
 router.get('/', (req, res, next) => {
     res.json(FILMS);
-}) */
+}) 
 
-//affichage via un req.query
+/* //affichage via un req.query
 router.get('/', (req, res) => {
     const minDurationValue = req?.query?.['minimum-duration']
         ? Number(req.query['minimum-duration']) : undefined;
@@ -57,7 +57,7 @@ router.get('/', (req, res) => {
     );
     res.json(filterFilms);
 
-}); 
+});  */
 
 //affichage via req.params
 router.get('/:id', (req, res) => {
@@ -71,8 +71,36 @@ router.get('/:id', (req, res) => {
     res.json(FILMS[filmIndex]);
 });
 
-router.post('/films', (req, res) => {
+/* router.post('/films', (req, res) => {
     res.json();
-})
+}) */
+
+// Create a film
+router.post('/', (req, res) => {
+    const title =
+      req?.body?.title?.trim()?.length !== 0 ? req.body.title : undefined;
+    const link =
+      req?.body?.content?.trim().length !== 0 ? req.body.link : undefined;
+    const duration =
+      typeof req?.body?.duration !== 'number' || req.body.duration < 0
+        ? undefined
+        : req.body.duration;
+    const budget =
+      typeof req?.body?.budget !== 'number' || req.body.budget < 0
+        ? undefined
+        : req.body.budget;
+  
+    if (!title || !link || !duration || !budget) return res.json('Bad request'); // bad practise (will be improved in exercise 1.5)
+  
+    const lastItemIndex = films?.length !== 0 ? films.length - 1 : undefined;
+    const lastId = lastItemIndex !== undefined ? films[lastItemIndex]?.id : 0;
+    const nextId = lastId + 1;
+  
+    const newFilm = { id: nextId, title, link, duration, budget };
+  
+    FILMS.push(newFilm);
+  
+    return res.json(newFilm);
+  });
 
 module.exports = router;
