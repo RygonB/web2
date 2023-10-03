@@ -1,0 +1,10 @@
+### Create a film
+POST http://localhost:3000/films
+Content-Type: application/json
+
+{
+    "title" : "Chat Potté",
+    "duration" : 142,
+    "budget" : 185000000,
+    "link" : "https://www.rottentomatoes.com/m/puss_in_boots_the_last_wish"
+}
