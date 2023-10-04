@@ -1,0 +1,11 @@
+### Create a film
+@baseUrl = http://localhost:3000
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title" : "Avatar 2",
+    "duration" : 142,
+    "budget" : 185000000,
+    "link" : "https://www.rottentomatoes.com/m/puss_in_boots_the_last_wish"
+}
