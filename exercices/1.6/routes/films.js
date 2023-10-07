@@ -50,7 +50,7 @@ router.get('/', (req, res) => {
     let filterfilms = [...films].filter((film) =>
         film.duration >= minDurationValue
     );
-    res.json(filterfilms);
+    res.json(filterfilms ?? films);
 
 });
 
@@ -167,7 +167,6 @@ router.put('/:id', (req, res) => {
         films.push(newFilm);
         return res.json(newFilm);
     }
-
     const filmPriorToChange = films[indexOfFilmFound];
     const objectContainingPropertiesToBeUpdated = req.body;
 
@@ -177,7 +176,7 @@ router.put('/:id', (req, res) => {
     };
 
     films[indexOfFilmFound] = updatedFilm;
-
+    console.log("index film found : "+indexOfFilmFound);
     return res.json(updatedFilm);
 })
 module.exports = router;
