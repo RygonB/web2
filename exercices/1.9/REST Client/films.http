@@ -1,5 +1,8 @@
-### Create a film
 @baseUrl = http://localhost:3000
+### Read all films
+GET {{baseUrl}}/film
+
+### Create a film
 POST {{baseUrl}}/film
 Content-Type: application/json
 
