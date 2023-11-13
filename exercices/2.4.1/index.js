@@ -1,4 +1,4 @@
-const delayTime = 4;
+const delayTime = 5;
 
 let clicks = 0;
 let startTime;
